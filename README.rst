@@ -20,22 +20,53 @@ Using pip::
 FANART API Summary
 ==================
 
+Low Level
+---------
+
+::
+
+    from fanart.core import Request
+    import fanart
+    request = Request(
+        apikey = '<YOURAPIKEY>',
+        id = '24e1b53c-3085-4581-8472-0b0088d2508c',
+        ws = fanart.WS.MUSIC,
+        type = fanart.TYPE.ALL,
+        sort = fanart.SORT.POPULAR,
+        limit = fanart.LIMIT.ALL,
+    )
+    print request.response
+
+
 Music
 -----
 
 ::
-    from fanart.api import ...
+
+    import os
+    os.environ.setdefault('FANART_APIKEY', '<YOURAPIKEY>')
+
+    from fanart.music import Artist
+
+    artist = Artist.get(id = '24e1b53c-3085-4581-8472-0b0088d2508c')
+    print artist.name
+    print artist.mbid
+    for album in artist.albums:
+        for cover in album.covers:
+            print cover
 
 Movie
 -----
 
 ::
+
     from fanart.api import ...
 
-Tv Shows
+TV Shows
 --------
 
 ::
+
     from fanart.api import ...
 
 .. _license:
