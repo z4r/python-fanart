@@ -53,7 +53,8 @@ Music
     print artist.mbid
     for album in artist.albums:
         for cover in album.covers:
-            print cover
+            print 'Saving: %s' % cover
+            cover.write()
 
 Movie
 -----

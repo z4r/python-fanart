@@ -1,4 +1,5 @@
 import os
+import urllib2
 from fanart.core import Request
 from fanart.utils import Immutable
 
@@ -39,6 +40,12 @@ class LeafItem(BaseItem):
     def __str__(self):
         return self.url
 
+    def write(self, path='.'):
+        _, ext = os.path.splitext(self.url)
+        filepath = os.path.join(path, '%d%s' % (self.id, ext))
+        response = urllib2.urlopen(self.url)
+        with open(filepath, 'wb') as fp:
+            fp.write(response.read())
 
 class ResourceItem(BaseItem):
     WS = NotImplemented
