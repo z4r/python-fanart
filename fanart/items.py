@@ -59,12 +59,12 @@ class LeafItem(Immutable):
         self.likes = int(likes)
 
     @classmethod
-    def from_dict(cls, map):
-        return cls(**dict([(str(k), v) for k, v in map.iteritems()]))
+    def from_dict(cls, resource):
+        return cls(**dict([(str(k), v) for k, v in resource.iteritems()]))
 
     @classmethod
-    def extract(cls, map):
-        return [cls.from_dict(i) for i in map.get(cls.KEY, {})]
+    def extract(cls, resource):
+        return [cls.from_dict(i) for i in resource.get(cls.KEY, {})]
 
     def __str__(self):
         return self.url
