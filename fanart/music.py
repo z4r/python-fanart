@@ -1,5 +1,4 @@
-from fanart.utils import Immutable
-from fanart.items import LeafItem, ResourceItem, CollectableItem
+from fanart.items import Immutable, LeafItem, ResourceItem, CollectableItem
 import fanart
 
 class BackgroundItem(LeafItem):
