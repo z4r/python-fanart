@@ -61,14 +61,25 @@ Movie
 
 ::
 
-    from fanart.api import ...
+    import os
+    os.environ.setdefault('FANART_APIKEY', '<YOURAPIKEY>')
+
+    from fanart.movie import Movie
+
+    movie = Movie.get(id = '70160')
+
 
 TV Shows
 --------
 
 ::
 
-    from fanart.api import ...
+    import os
+    os.environ.setdefault('FANART_APIKEY', '<YOURAPIKEY>')
+
+    from fanart.tv import TvShow
+
+    tvshow = TvShow.get(id = '80379')
 
 .. _license:
 

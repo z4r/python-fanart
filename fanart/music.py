@@ -13,12 +13,12 @@ class LogoItem(LeafItem):
     KEY = fanart.TYPE.MUSIC.LOGO
 
 
-class ArtItem(LeafItem):
-    KEY =  fanart.TYPE.MUSIC.ART
+class DiscItem(LeafItem):
+    KEY =  fanart.TYPE.MUSIC.DISC
 
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, disc, size):
-        super(ArtItem, self).__init__(id, url, likes)
+        super(DiscItem, self).__init__(id, url, likes)
         self.disc = int(disc)
         self.size = int(size)
 
@@ -60,5 +60,5 @@ class Album(CollectableItem):
         return cls(
             mbid = key,
             covers = CoverItem.extract(resource),
-            arts = ArtItem.extract(resource),
+            arts = DiscItem.extract(resource),
         )

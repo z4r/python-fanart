@@ -1,26 +1,27 @@
 import fanart
 from fanart.items import LeafItem, Immutable, ResourceItem
 
-class TVItem(LeafItem):
+class TvItem(LeafItem):
+
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang):
-        super(TVItem, self).__init__(id, url, likes)
+        super(TvItem, self).__init__(id, url, likes)
         self.language = lang
 
 
-class CharacterItem(TVItem):
+class CharacterItem(TvItem):
     KEY = fanart.TYPE.TV.CHARACTER
 
 
-class ArtItem(TVItem):
+class ArtItem(TvItem):
     KEY = fanart.TYPE.TV.ART
 
 
-class LogoItem(TVItem):
+class LogoItem(TvItem):
     KEY = fanart.TYPE.TV.LOGO
 
 
-class SeasonItem(TVItem):
+class SeasonItem(TvItem):
 
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang, season):
@@ -28,7 +29,7 @@ class SeasonItem(TVItem):
         self.season = int(season)
 
 
-class ThumbItem(TVItem):
+class ThumbItem(TvItem):
     KEY = fanart.TYPE.TV.THUMB
 
 

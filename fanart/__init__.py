@@ -66,7 +66,7 @@ class TYPE(object):
 
 
     class MUSIC(object):
-        ART = 'cdart'
+        DISC = 'cdart'
         LOGO = 'musiclogo'
         BACKGROUND = 'artistbackground'
         COVER = 'albumcover'
