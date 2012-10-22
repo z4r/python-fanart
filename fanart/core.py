@@ -1,37 +1,9 @@
-import json
-from urllib2 import urlopen, HTTPError
+import requests
 import fanart
-
-
-class FanartError(Exception):
-    def __str__(self):
-        return ', '.join(map(str, self.args))
-
-    def __repr__(self):
-        name = self.__class__.__name__
-        return '%s%r' % (name, self.args)
-
-
-class ResponseFanartError(FanartError):
-    pass
-
-
-class RequestFanartError(FanartError):
-    pass
-
-
-class Response(dict):
-    def __init__(self, response, **kwargs):
-        super(Response, self).__init__(**kwargs)
-        try:
-            self.update(json.loads(response))
-        except (ValueError, KeyError, TypeError):
-            raise ResponseFanartError(response)
+from fanart.errors import RequestFanartError, ResponseFanartError
 
 
 class Request(object):
-    response_cls = Response
-
     def __init__(self, apikey, id, ws, type=None, sort=None, limit=None):
         self._apikey = apikey
         self._id = id
@@ -63,10 +35,7 @@ class Request(object):
 
     @property
     def response(self):
-        if not self._response:
-            try:
-                response = urlopen(str(self))
-            except HTTPError as e:
-                response = e
-            self._response = self.response_cls(response.read())
-        return self._response
+        try:
+            return requests.get(str(self)).json
+        except requests.exceptions.RequestException as e:
+            raise ResponseFanartError(e)
