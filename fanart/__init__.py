@@ -1,5 +1,5 @@
 __author__ = 'Andrea De Marco <24erre@gmail.com>'
-__version__ = '0.1'
+__version__ = '0.2'
 __classifiers__ = [
     'Development Status :: 4 - Beta',
     'Intended Audience :: Developers',
@@ -8,7 +8,7 @@ __classifiers__ = [
     'Programming Language :: Python',
     'Topic :: Internet :: WWW/HTTP',
     'Topic :: Software Development :: Libraries',
-    ]
+]
 __copyright__ = "2012, %s " % __author__
 __license__ = """
    Copyright %s.
@@ -37,10 +37,12 @@ __doc__ = """
 :copyright: %s
 """ % (__version__, __author__, __license__)
 
+
 def values(obj):
-    return [v for k,v in obj.__dict__.iteritems() if not k.startswith('_')]
+    return [v for k, v in obj.__dict__.iteritems() if not k.startswith('_')]
 
 BASEURL = 'http://fanart.tv/webservice'
+
 
 class FORMAT(object):
     JSON = 'JSON'
@@ -63,14 +65,13 @@ class TYPE(object):
         CHARACTER = 'characterart'
         THUMB = 'tvthumb'
         SEASONTHUMB = 'seasonthumb'
-
+        BACKGROUND = 'showbackground'
 
     class MUSIC(object):
         DISC = 'cdart'
         LOGO = 'musiclogo'
         BACKGROUND = 'artistbackground'
         COVER = 'albumcover'
-
 
     class MOVIE(object):
         ART = 'movieart'
@@ -98,21 +99,28 @@ SORT_LIST = values(SORT)
 LIMIT_LIST = values(LIMIT)
 
 import logging
+try:
+    from logging import NullHandler
+except ImportError:
+    class NullHandler(logging.Handler):
+        def emit(self, record):
+            pass
+logging.getLogger(__name__).addHandler(NullHandler())
 
 LOG_LEVELS = {
     'critical': logging.CRITICAL,
     'error': logging.ERROR,
     'warning': logging.WARNING,
     'info': logging.INFO,
-    'debug': logging.DEBUG
+    'debug': logging.DEBUG,
 }
+
 
 def set_logging(level, handler=None):
     if not handler:
         handler = logging.StreamHandler()
-    format = r'[%(levelname)s] %(message)s'
-    handler.setFormatter(logging.Formatter(format))
-    loggers = [ logging.getLogger('fanart'), ]
-    for logger in loggers:
-        logger.setLevel(LOG_LEVELS.get(level, logging.INFO))
-        logger.addHandler(handler)
+    fmt = r'[%(levelname)s] %(message)s'
+    handler.setFormatter(logging.Formatter(fmt))
+    logger = logging.getLogger(__name__)
+    logger.setLevel(LOG_LEVELS.get(level, logging.INFO))
+    logger.addHandler(handler)

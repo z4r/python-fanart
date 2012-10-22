@@ -1,6 +1,7 @@
 import fanart
 from fanart.items import LeafItem, Immutable, ResourceItem
 
+
 class MovieItem(LeafItem):
 
     @Immutable.mutablemethod

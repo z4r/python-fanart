@@ -1,6 +1,7 @@
 import fanart
 from fanart.items import LeafItem, Immutable, ResourceItem
 
+
 class TvItem(LeafItem):
 
     @Immutable.mutablemethod
@@ -21,6 +22,15 @@ class LogoItem(TvItem):
     KEY = fanart.TYPE.TV.LOGO
 
 
+class BackgroundItem(TvItem):
+    KEY = fanart.TYPE.TV.BACKGROUND
+
+    @Immutable.mutablemethod
+    def __init__(self, id, url, likes, lang, season):
+        super(BackgroundItem, self).__init__(id, url, likes, lang)
+        self.season = 0 if season == 'all' else int(season)
+
+
 class SeasonItem(TvItem):
 
     @Immutable.mutablemethod
@@ -37,9 +47,10 @@ class TvShow(ResourceItem):
     WS = fanart.WS.TV
 
     @Immutable.mutablemethod
-    def __init__(self, name, tvdbid, characters, arts, logos, seasons, thumbs):
+    def __init__(self, name, tvdbid, backgrounds, characters, arts, logos, seasons, thumbs):
         self.name = name
         self.tvdbid = tvdbid
+        self.backgrounds = backgrounds
         self.characters = characters
         self.arts = arts
         self.logos = logos
@@ -53,6 +64,7 @@ class TvShow(ResourceItem):
         return cls(
             name = name,
             tvdbid = resource['thetvdb_id'],
+            backgrounds = BackgroundItem.extract(resource),
             characters = CharacterItem.extract(resource),
             arts = ArtItem.extract(resource),
             logos = LogoItem.extract(resource),

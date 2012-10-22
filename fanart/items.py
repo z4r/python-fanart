@@ -2,11 +2,13 @@ import os
 import urllib2
 from fanart.core import Request
 
+
 class Immutable(object):
     _mutable = False
+
     def __setattr__(self, name, value):
         if self._mutable or name == '_mutable':
-            super(Immutable,self).__setattr__(name,value)
+            super(Immutable, self).__setattr__(name, value)
         else:
             raise TypeError("Can't modify immutable instance")
 
@@ -25,8 +27,8 @@ class Immutable(object):
     def __repr__(self):
         return '%s(%s)' % (
             self.__class__.__name__,
-            ', '.join(['{0}={1}'.format(k,repr(v)) for k,v in self])
-            )
+            ', '.join(['{0}={1}'.format(k, repr(v)) for k, v in self])
+        )
 
     def __iter__(self):
         l = self.__dict__.keys()
@@ -37,14 +39,14 @@ class Immutable(object):
 
     @staticmethod
     def mutablemethod(f):
-        def func(self,*args, **kwargs):
-            if isinstance(self,Immutable):
+        def func(self, *args, **kwargs):
+            if isinstance(self, Immutable):
                 old_mutable = self._mutable
                 self._mutable = True
-                res = f(self,*args, **kwargs)
+                res = f(self, *args, **kwargs)
                 self._mutable = old_mutable
             else:
-                res = f(self,*args, **kwargs)
+                res = f(self, *args, **kwargs)
             return res
         return func
 
@@ -88,9 +90,9 @@ class ResourceItem(Immutable):
     @classmethod
     def get(cls, id):
         map = cls.request_cls(
-            apikey = os.environ.get('FANART_APIKEY'),
-            id = id,
-            ws = cls.WS
+            apikey=os.environ.get('FANART_APIKEY'),
+            id=id,
+            ws=cls.WS
         ).response
         return cls.from_dict(map)
 

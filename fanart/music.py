@@ -1,6 +1,7 @@
 from fanart.items import Immutable, LeafItem, ResourceItem, CollectableItem
 import fanart
 
+
 class BackgroundItem(LeafItem):
     KEY = fanart.TYPE.MUSIC.BACKGROUND
 
@@ -14,7 +15,7 @@ class LogoItem(LeafItem):
 
 
 class DiscItem(LeafItem):
-    KEY =  fanart.TYPE.MUSIC.DISC
+    KEY = fanart.TYPE.MUSIC.DISC
 
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, disc, size):
@@ -39,11 +40,11 @@ class Artist(ResourceItem):
         assert len(resource) == 1, 'Bad Format Map'
         name, resource = resource.items()[0]
         return cls(
-            name = name,
-            mbid = resource['mbid_id'],
-            albums = Album.collection_from_dict(resource.get('albums', {})),
-            backgrounds = BackgroundItem.extract(resource),
-            logos = LogoItem.extract(resource),
+            name=name,
+            mbid=resource['mbid_id'],
+            albums=Album.collection_from_dict(resource.get('albums', {})),
+            backgrounds=BackgroundItem.extract(resource),
+            logos=LogoItem.extract(resource),
         )
 
 
