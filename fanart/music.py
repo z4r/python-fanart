@@ -59,7 +59,7 @@ class Album(CollectableItem):
     @classmethod
     def from_dict(cls, key, resource):
         return cls(
-            mbid = key,
-            covers = CoverItem.extract(resource),
-            arts = DiscItem.extract(resource),
+            mbid=key,
+            covers=CoverItem.extract(resource),
+            arts=DiscItem.extract(resource),
         )

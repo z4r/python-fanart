@@ -62,12 +62,12 @@ class TvShow(ResourceItem):
         assert len(resource) == 1, 'Bad Format Map'
         name, resource = resource.items()[0]
         return cls(
-            name = name,
-            tvdbid = resource['thetvdb_id'],
-            backgrounds = BackgroundItem.extract(resource),
-            characters = CharacterItem.extract(resource),
-            arts = ArtItem.extract(resource),
-            logos = LogoItem.extract(resource),
-            seasons = SeasonItem.extract(resource),
-            thumbs = ThumbItem.extract(resource)
+            name=name,
+            tvdbid=resource['thetvdb_id'],
+            backgrounds=BackgroundItem.extract(resource),
+            characters=CharacterItem.extract(resource),
+            arts=ArtItem.extract(resource),
+            logos=LogoItem.extract(resource),
+            seasons=SeasonItem.extract(resource),
+            thumbs=ThumbItem.extract(resource),
         )

@@ -45,10 +45,10 @@ class Movie(ResourceItem):
         assert len(resource) == 1, 'Bad Format Map'
         name, resource = resource.items()[0]
         return cls(
-            name = name,
-            imdbid = resource['imdb_id'],
-            tmdbid = resource['tmdb_id'],
-            arts = ArtItem.extract(resource),
-            logos = LogoItem.extract(resource),
-            discs = DiscItem.extract(resource),
+            name=name,
+            imdbid=resource['imdb_id'],
+            tmdbid=resource['tmdb_id'],
+            arts=ArtItem.extract(resource),
+            logos=LogoItem.extract(resource),
+            discs=DiscItem.extract(resource),
         )
