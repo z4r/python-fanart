@@ -43,11 +43,19 @@ class ThumbItem(TvItem):
     KEY = fanart.TYPE.TV.THUMB
 
 
+class HdLogoItem(TvItem):
+    KEY = fanart.TYPE.TV.HDLOGO
+
+
+class HdArtItem(TvItem):
+    KEY = fanart.TYPE.TV.HDART
+
+
 class TvShow(ResourceItem):
     WS = fanart.WS.TV
 
     @Immutable.mutablemethod
-    def __init__(self, name, tvdbid, backgrounds, characters, arts, logos, seasons, thumbs):
+    def __init__(self, name, tvdbid, backgrounds, characters, arts, logos, seasons, thumbs, hdlogos, hdarts):
         self.name = name
         self.tvdbid = tvdbid
         self.backgrounds = backgrounds
@@ -56,6 +64,8 @@ class TvShow(ResourceItem):
         self.logos = logos
         self.seasons = seasons
         self.thumbs = thumbs
+        self.hdlogos = hdlogos
+        self.hdarts = hdarts
 
     @classmethod
     def from_dict(cls, resource):
@@ -70,4 +80,6 @@ class TvShow(ResourceItem):
             logos=LogoItem.extract(resource),
             seasons=SeasonItem.extract(resource),
             thumbs=ThumbItem.extract(resource),
+            hdlogos=HdLogoItem.extract(resource),
+            hdarts=HdArtItem.extract(resource),
         )

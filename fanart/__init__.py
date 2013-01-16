@@ -66,6 +66,8 @@ class TYPE(object):
         THUMB = 'tvthumb'
         SEASONTHUMB = 'seasonthumb'
         BACKGROUND = 'showbackground'
+        HDLOGO = 'hdtvlogo'
+        HDART = 'hdclearart'
 
     class MUSIC(object):
         DISC = 'cdart'
