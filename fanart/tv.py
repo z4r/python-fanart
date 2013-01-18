@@ -3,7 +3,6 @@ from fanart.items import LeafItem, Immutable, ResourceItem
 
 
 class TvItem(LeafItem):
-
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang):
         super(TvItem, self).__init__(id, url, likes)
@@ -32,6 +31,7 @@ class BackgroundItem(TvItem):
 
 
 class SeasonItem(TvItem):
+    KEY = fanart.TYPE.TV.SEASONTHUMB
 
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang, season):

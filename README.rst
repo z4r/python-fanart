@@ -35,7 +35,7 @@ Low Level
         sort = fanart.SORT.POPULAR,
         limit = fanart.LIMIT.ALL,
     )
-    print request.response
+    print request.response()
 
 
 Music
@@ -45,6 +45,7 @@ Music
 
     import os
     os.environ.setdefault('FANART_APIKEY', '<YOURAPIKEY>')
+    import requests
 
     from fanart.music import Artist
 
@@ -54,7 +55,10 @@ Music
     for album in artist.albums:
         for cover in album.covers:
             print 'Saving: %s' % cover
-            cover.write()
+            _, ext = os.path.splitext(cover.url)
+            filepath = os.path.join(path, '%d%s' % (cover.id, ext))
+            with open(filepath, 'wb') as fp:
+                fp.write(cover.content())
 
 Movie
 -----

@@ -1,7 +1,7 @@
 __author__ = 'Andrea De Marco <24erre@gmail.com>'
-__version__ = '0.2'
+__version__ = '1.0'
 __classifiers__ = [
-    'Development Status :: 4 - Beta',
+    'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: Apache Software License',
     'Operating System :: OS Independent',
@@ -41,7 +41,7 @@ __doc__ = """
 def values(obj):
     return [v for k, v in obj.__dict__.iteritems() if not k.startswith('_')]
 
-BASEURL = 'http://fanart.tv/webservice'
+BASEURL = 'http://api.fanart.tv/webservice'
 
 
 class FORMAT(object):
@@ -99,30 +99,3 @@ TV_TYPE_LIST = values(TYPE.TV) + [TYPE.ALL]
 MOVIE_TYPE_LIST = values(TYPE.MOVIE) + [TYPE.ALL]
 SORT_LIST = values(SORT)
 LIMIT_LIST = values(LIMIT)
-
-import logging
-try:
-    from logging import NullHandler
-except ImportError:
-    class NullHandler(logging.Handler):
-        def emit(self, record):
-            pass
-logging.getLogger(__name__).addHandler(NullHandler())
-
-LOG_LEVELS = {
-    'critical': logging.CRITICAL,
-    'error': logging.ERROR,
-    'warning': logging.WARNING,
-    'info': logging.INFO,
-    'debug': logging.DEBUG,
-}
-
-
-def set_logging(level, handler=None):
-    if not handler:
-        handler = logging.StreamHandler()
-    fmt = r'[%(levelname)s] %(message)s'
-    handler.setFormatter(logging.Formatter(fmt))
-    logger = logging.getLogger(__name__)
-    logger.setLevel(LOG_LEVELS.get(level, logging.INFO))
-    logger.addHandler(handler)
