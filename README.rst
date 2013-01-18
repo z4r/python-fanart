@@ -2,10 +2,10 @@
 Python interface to fanart.tv API
 =================================
 
-This package provides a module to interface with the `fanart.tv`_ API.
-
-.. https://travis-ci.org/z4r/python-fanart.png?branch=master
+.. image:: https://api.travis-ci.org/z4r/python-fanart.png?branch=master
    :target: http://travis-ci.org/z4r/python-fanart
+
+This package provides a module to interface with the `fanart.tv`_ API.
 
 .. contents::
     :local:
