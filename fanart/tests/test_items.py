@@ -25,19 +25,3 @@ class LeafItemTestCase(TestCase):
         self.assertEqual(len(HTTPretty.latest_requests), 1)
         self.assertEqual(self.leaf.content(), body)  # Cached
         self.assertEqual(len(HTTPretty.latest_requests), 1)
-
-
-class ResourceItemTestCase(TestCase):
-    def setUp(self):
-        self.resource = ResourceItem()
-
-    def test_from_dict(self):
-        self.assertRaises(NotImplementedError, self.resource.from_dict, None)
-
-
-class CollectableItemTestCase(TestCase):
-    def setUp(self):
-        self.collectable = CollectableItem()
-
-    def test_from_dict(self):
-        self.assertRaises(NotImplementedError, self.collectable.from_dict, None, None)
