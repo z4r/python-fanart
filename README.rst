@@ -5,8 +5,8 @@ Python interface to fanart.tv API
 .. image:: https://api.travis-ci.org/z4r/python-fanart.png?branch=master
    :target: http://travis-ci.org/z4r/python-fanart
 
-.. image:: https://coveralls.io/repos/z4r/python-fanart.png?branch=master
-    :target: https://coveralls.io/repos/z4r/python-fanart
+.. image:: https://coveralls.io/repos/z4r/python-fanart/badge.png?branch=master
+    :target: https://coveralls.io/r/z4r/python-fanart
 
 This package provides a module to interface with the `fanart.tv`_ API.
 
