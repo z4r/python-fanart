@@ -7,6 +7,12 @@ Python interface to fanart.tv API
 
 .. image:: https://coveralls.io/repos/z4r/python-fanart/badge.png?branch=master
     :target: https://coveralls.io/r/z4r/python-fanart
+    
+.. image:: https://pypip.in/v/python-fanart/badge.png
+   :target: https://crate.io/packages/python-fanart/
+
+.. image:: https://pypip.in/d/python-fanart/badge.png
+   :target: https://crate.io/packages/python-fanart/
 
 This package provides a module to interface with the `fanart.tv`_ API.
 
