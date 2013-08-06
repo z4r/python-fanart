@@ -1,3 +1,4 @@
+import json
 import os
 import requests
 from fanart.core import Request
@@ -48,6 +49,13 @@ class ResourceItem(Immutable):
             ws=cls.WS
         ).response()
         return cls.from_dict(map)
+
+    def json(self, **kw):
+        return json.dumps(
+            self,
+            default=lambda o: dict([(k, v) for k, v in o.__dict__.items() if not k.startswith('_')]),
+            **kw
+        )
 
 
 class CollectableItem(Immutable):

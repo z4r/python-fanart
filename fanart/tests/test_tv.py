@@ -1,3 +1,4 @@
+import json
 import os
 import unittest
 from httpretty import HTTPretty, httprettified
@@ -18,6 +19,8 @@ class TvItemTestCase(unittest.TestCase):
         )
         wilfred = TvShow.get(id=239761)
         self.assertEqual(wilfred.tvdbid, '239761')
+        with open(os.path.join(LOCALDIR, 'json/wilfred.json')) as fp:
+            self.assertEqual(json.loads(wilfred.json()), json.load(fp))
 
     @httprettified
     def test_get_dexter(self):
