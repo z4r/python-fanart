@@ -35,6 +35,10 @@ class Request(object):
 
     def response(self):
         try:
-            return requests.get(str(self)).json()
+            response = requests.get(str(self))
+            rjson = response.json()
+            if not isinstance(rjson, dict):
+                raise Exception(response.text)
+            return rjson
         except Exception as e:
             raise ResponseFanartError(str(e))

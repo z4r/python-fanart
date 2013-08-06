@@ -1,4 +1,5 @@
 import json
+from fanart.errors import ResponseFanartError
 import os
 import unittest
 from httpretty import HTTPretty, httprettified
@@ -34,3 +35,12 @@ class TvItemTestCase(unittest.TestCase):
         dexter = TvShow.get(id=79349)
         self.assertEqual(dexter.tvdbid, '79349')
         self.assertEqual(dexter, eval(repr(dexter)))
+
+    @httprettified
+    def test_get_null(self):
+        HTTPretty.register_uri(
+            HTTPretty.GET,
+            'http://api.fanart.tv/webservice/series/e3c7f0d0beeaf45b3a0dd3b9dd8a3338/79349/JSON/all/1/2',
+            body='null'
+        )
+        self.assertRaises(ResponseFanartError, TvShow.get, id=79349)
