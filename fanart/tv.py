@@ -9,6 +9,13 @@ class TvItem(LeafItem):
         self.language = lang
 
 
+class SeasonedTvItem(TvItem):
+    @Immutable.mutablemethod
+    def __init__(self, id, url, likes, lang, season):
+        super(SeasonedTvItem, self).__init__(id, url, likes, lang)
+        self.season = 0 if season == 'all' else int(season)
+
+
 class CharacterItem(TvItem):
     KEY = fanart.TYPE.TV.CHARACTER
 
@@ -21,22 +28,12 @@ class LogoItem(TvItem):
     KEY = fanart.TYPE.TV.LOGO
 
 
-class BackgroundItem(TvItem):
+class BackgroundItem(SeasonedTvItem):
     KEY = fanart.TYPE.TV.BACKGROUND
 
-    @Immutable.mutablemethod
-    def __init__(self, id, url, likes, lang, season):
-        super(BackgroundItem, self).__init__(id, url, likes, lang)
-        self.season = 0 if season == 'all' else int(season)
 
-
-class SeasonItem(TvItem):
+class SeasonItem(SeasonedTvItem):
     KEY = fanart.TYPE.TV.SEASONTHUMB
-
-    @Immutable.mutablemethod
-    def __init__(self, id, url, likes, lang, season):
-        super(SeasonItem, self).__init__(id, url, likes, lang)
-        self.season = int(season)
 
 
 class ThumbItem(TvItem):

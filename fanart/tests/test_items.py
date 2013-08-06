@@ -1,6 +1,6 @@
 from unittest import TestCase
 import os
-from fanart.items import LeafItem, ResourceItem, CollectableItem
+from fanart.items import LeafItem
 from httpretty import httprettified, HTTPretty
 from fanart.tests import LOCALDIR
 
