@@ -24,7 +24,7 @@ class SeasonedTvItem(TvItem):
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang, season):
         super(SeasonedTvItem, self).__init__(id, url, likes, lang)
-        self.season = 0 if season == 'all' else int(season)
+        self.season = 0 if season == 'all' else int(season or 0)
 
 
 class CharacterItem(TvItem):
