@@ -1,5 +1,11 @@
 import fanart
 from fanart.items import LeafItem, Immutable, ResourceItem
+__all__ = (
+    'ArtItem',
+    'DiscItem',
+    'LogoItem',
+    'Movie',
+)
 
 
 class MovieItem(LeafItem):
@@ -7,7 +13,7 @@ class MovieItem(LeafItem):
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang):
         super(MovieItem, self).__init__(id, url, likes)
-        self.language = lang
+        self.lang = lang
 
 
 class DiscItem(MovieItem):
@@ -15,7 +21,7 @@ class DiscItem(MovieItem):
 
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang, disc, disc_type):
-        super(MovieItem, self).__init__(id, url, likes)
+        super(DiscItem, self).__init__(id, url, likes, lang)
         self.disc = int(disc)
         self.disc_type = disc_type
 

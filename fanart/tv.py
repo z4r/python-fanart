@@ -1,12 +1,23 @@
 import fanart
 from fanart.items import LeafItem, Immutable, ResourceItem
+__all__ = (
+    'CharacterItem',
+    'ArtItem',
+    'LogoItem',
+    'BackgroundItem',
+    'SeasonItem',
+    'ThumbItem',
+    'HdLogoItem',
+    'HdArtItem',
+    'TvShow',
+)
 
 
 class TvItem(LeafItem):
     @Immutable.mutablemethod
     def __init__(self, id, url, likes, lang):
         super(TvItem, self).__init__(id, url, likes)
-        self.language = lang
+        self.lang = lang
 
 
 class SeasonedTvItem(TvItem):

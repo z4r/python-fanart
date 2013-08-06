@@ -1,5 +1,13 @@
 from fanart.items import Immutable, LeafItem, ResourceItem, CollectableItem
 import fanart
+__all__ = (
+    'BackgroundItem',
+    'CoverItem',
+    'LogoItem',
+    'DiscItem',
+    'Artist',
+    'Album',
+)
 
 
 class BackgroundItem(LeafItem):

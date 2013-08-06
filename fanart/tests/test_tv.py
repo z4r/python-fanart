@@ -2,7 +2,7 @@ import json
 import os
 import unittest
 from httpretty import HTTPretty, httprettified
-from fanart.tv import TvShow
+from fanart.tv import *
 from fanart.tests import LOCALDIR
 os.environ['FANART_APIKEY'] = 'e3c7f0d0beeaf45b3a0dd3b9dd8a3338'
 
@@ -33,3 +33,4 @@ class TvItemTestCase(unittest.TestCase):
         )
         dexter = TvShow.get(id=79349)
         self.assertEqual(dexter.tvdbid, '79349')
+        self.assertEqual(dexter, eval(repr(dexter)))
