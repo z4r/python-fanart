@@ -40,12 +40,12 @@ Low Level
     from fanart.core import Request
     import fanart
     request = Request(
-        apikey = '<YOURAPIKEY>',
-        id = '24e1b53c-3085-4581-8472-0b0088d2508c',
-        ws = fanart.WS.MUSIC,
-        type = fanart.TYPE.ALL,
-        sort = fanart.SORT.POPULAR,
-        limit = fanart.LIMIT.ALL,
+        apikey='<YOURAPIKEY>',
+        id='24e1b53c-3085-4581-8472-0b0088d2508c',
+        ws=fanart.WS.MUSIC,
+        type=fanart.TYPE.ALL,
+        sort=fanart.SORT.POPULAR,
+        limit=fanart.LIMIT.ALL,
     )
     print request.response()
 
@@ -61,7 +61,7 @@ Music
 
     from fanart.music import Artist
 
-    artist = Artist.get(id = '24e1b53c-3085-4581-8472-0b0088d2508c')
+    artist = Artist.get(id='24e1b53c-3085-4581-8472-0b0088d2508c')
     print artist.name
     print artist.mbid
     for album in artist.albums:
@@ -82,7 +82,7 @@ Movie
 
     from fanart.movie import Movie
 
-    movie = Movie.get(id = '70160')
+    movie = Movie.get(id='70160')
 
 
 TV Shows
@@ -95,7 +95,7 @@ TV Shows
 
     from fanart.tv import TvShow
 
-    tvshow = TvShow.get(id = '80379')
+    tvshow = TvShow.get(id='80379')
 
 .. _license:
 
