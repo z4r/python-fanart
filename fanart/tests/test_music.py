@@ -19,3 +19,4 @@ class ArtistItemTestCase(unittest.TestCase):
         a7f = Artist.get(id='24e1b53c-3085-4581-8472-0b0088d2508c')
         self.assertEqual(a7f.mbid, '24e1b53c-3085-4581-8472-0b0088d2508c')
         self.assertEqual(a7f, eval(repr(a7f)))
+        self.assertEqual(len(a7f.thumbs), 2)

@@ -74,6 +74,7 @@ class TYPE(object):
         LOGO = 'musiclogo'
         BACKGROUND = 'artistbackground'
         COVER = 'albumcover'
+        THUMB = 'artistthumb'
 
     class MOVIE(object):
         ART = 'movieart'
