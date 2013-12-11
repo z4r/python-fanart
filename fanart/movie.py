@@ -5,6 +5,7 @@ __all__ = (
     'DiscItem',
     'LogoItem',
     'PosterItem',
+    'BackgroundItem',
     'Movie',
 )
 
@@ -39,11 +40,15 @@ class PosterItem(MovieItem):
     KEY = fanart.TYPE.MOVIE.POSTER
 
 
+class BackgroundItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.BACKGROUND
+
+
 class Movie(ResourceItem):
     WS = fanart.WS.MOVIE
 
     @Immutable.mutablemethod
-    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters):
+    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds):
         self.name = name
         self.imdbid = imdbid
         self.tmdbid = tmdbid
@@ -51,6 +56,7 @@ class Movie(ResourceItem):
         self.posters = posters
         self.logos = logos
         self.discs = discs
+        self.backgrounds = backgrounds
 
     @classmethod
     def from_dict(cls, resource):
@@ -64,4 +70,5 @@ class Movie(ResourceItem):
             logos=LogoItem.extract(resource),
             discs=DiscItem.extract(resource),
             posters=PosterItem.extract(resource),
+            backgrounds=BackgroundItem.extract(resource),
         )

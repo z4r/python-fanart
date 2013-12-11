@@ -81,6 +81,7 @@ class TYPE(object):
         LOGO = 'movielogo'
         DISC = 'moviedisc'
         POSTER = 'movieposter'
+        BACKGROUND = 'moviebackground'
 
 
 class SORT(object):
