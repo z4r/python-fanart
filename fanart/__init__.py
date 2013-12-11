@@ -80,6 +80,7 @@ class TYPE(object):
         ART = 'movieart'
         LOGO = 'movielogo'
         DISC = 'moviedisc'
+        POSTER = 'movieposter'
 
 
 class SORT(object):

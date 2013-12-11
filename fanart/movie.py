@@ -4,6 +4,7 @@ __all__ = (
     'ArtItem',
     'DiscItem',
     'LogoItem',
+    'PosterItem',
     'Movie',
 )
 
@@ -34,15 +35,20 @@ class LogoItem(MovieItem):
     KEY = fanart.TYPE.MOVIE.LOGO
 
 
+class PosterItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.POSTER
+
+
 class Movie(ResourceItem):
     WS = fanart.WS.MOVIE
 
     @Immutable.mutablemethod
-    def __init__(self, name, imdbid, tmdbid, arts, logos, discs):
+    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters):
         self.name = name
         self.imdbid = imdbid
         self.tmdbid = tmdbid
         self.arts = arts
+        self.posters = posters
         self.logos = logos
         self.discs = discs
 
@@ -57,4 +63,5 @@ class Movie(ResourceItem):
             arts=ArtItem.extract(resource),
             logos=LogoItem.extract(resource),
             discs=DiscItem.extract(resource),
+            posters=PosterItem.extract(resource),
         )
