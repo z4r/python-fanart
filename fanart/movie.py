@@ -44,11 +44,15 @@ class BackgroundItem(MovieItem):
     KEY = fanart.TYPE.MOVIE.BACKGROUND
 
 
+class HDMovieLogoItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.HDMOVIELOGO
+
+
 class Movie(ResourceItem):
     WS = fanart.WS.MOVIE
 
     @Immutable.mutablemethod
-    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds):
+    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds, hdmovielogos):
         self.name = name
         self.imdbid = imdbid
         self.tmdbid = tmdbid
@@ -57,6 +61,7 @@ class Movie(ResourceItem):
         self.logos = logos
         self.discs = discs
         self.backgrounds = backgrounds
+        self.hdmovielogos = hdmovielogos
 
     @classmethod
     def from_dict(cls, resource):
@@ -71,4 +76,5 @@ class Movie(ResourceItem):
             discs=DiscItem.extract(resource),
             posters=PosterItem.extract(resource),
             backgrounds=BackgroundItem.extract(resource),
+            hdmovielogos=HDMovieLogoItem.extract(resource),
         )
