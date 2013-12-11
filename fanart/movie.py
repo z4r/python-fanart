@@ -61,7 +61,7 @@ class Movie(ResourceItem):
 
     @Immutable.mutablemethod
     def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds, hdmovielogos, clearlogos,
-                 hdclearart):
+                 hdcleararts):
         self.name = name
         self.imdbid = imdbid
         self.tmdbid = tmdbid
@@ -72,7 +72,7 @@ class Movie(ResourceItem):
         self.backgrounds = backgrounds
         self.hdmovielogos = hdmovielogos
         self.clearlogos = clearlogos
-        self.hdclearart = hdclearart
+        self.hdcleararts = hdcleararts
 
     @classmethod
     def from_dict(cls, resource):
@@ -89,5 +89,5 @@ class Movie(ResourceItem):
             backgrounds=BackgroundItem.extract(resource),
             hdmovielogos=HDMovieLogoItem.extract(resource),
             clearlogos=ClearLogoItem.extract(resource),
-            hdclearart=HDClearArtItem.extract(resource),
+            hdcleararts=HDClearArtItem.extract(resource),
         )
