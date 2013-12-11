@@ -83,7 +83,6 @@ class TYPE(object):
         POSTER = 'movieposter'
         BACKGROUND = 'moviebackground'
         HDMOVIELOGO = 'hdmovielogo'
-        CLEARLOGO = 'movielogo'
         HDCLEARART = 'hdmovieclearart'
         BANNER = 'moviebanner'
         THUMB = 'moviethumb'
