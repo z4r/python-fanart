@@ -56,12 +56,16 @@ class HDClearArtItem(MovieItem):
     KEY = fanart.TYPE.MOVIE.HDCLEARART
 
 
+class BannerItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.BANNER
+
+
 class Movie(ResourceItem):
     WS = fanart.WS.MOVIE
 
     @Immutable.mutablemethod
     def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds, hdmovielogos, clearlogos,
-                 hdcleararts):
+                 hdcleararts, banners):
         self.name = name
         self.imdbid = imdbid
         self.tmdbid = tmdbid
@@ -73,6 +77,7 @@ class Movie(ResourceItem):
         self.hdmovielogos = hdmovielogos
         self.clearlogos = clearlogos
         self.hdcleararts = hdcleararts
+        self.banners = banners
 
     @classmethod
     def from_dict(cls, resource):
@@ -90,4 +95,5 @@ class Movie(ResourceItem):
             hdmovielogos=HDMovieLogoItem.extract(resource),
             clearlogos=ClearLogoItem.extract(resource),
             hdcleararts=HDClearArtItem.extract(resource),
+            banners=BannerItem.extract(resource),
         )

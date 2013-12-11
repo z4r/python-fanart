@@ -85,6 +85,7 @@ class TYPE(object):
         HDMOVIELOGO = 'hdmovielogo'
         CLEARLOGO = 'movielogo'
         HDCLEARART = 'hdmovieclearart'
+        BANNER = 'moviebanner'
 
 
 class SORT(object):
