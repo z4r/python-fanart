@@ -6,8 +6,8 @@ __all__ = (
     'LogoItem',
     'PosterItem',
     'BackgroundItem',
-    'HDMovieLogoItem',
-    'HDClearArtItem',
+    'HdLogoItem',
+    'HdArtItem',
     'BannerItem',
     'ThumbItem',
     'Movie',
@@ -48,12 +48,12 @@ class BackgroundItem(MovieItem):
     KEY = fanart.TYPE.MOVIE.BACKGROUND
 
 
-class HDMovieLogoItem(MovieItem):
-    KEY = fanart.TYPE.MOVIE.HDMOVIELOGO
+class HdLogoItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.HDLOGO
 
 
-class HDClearArtItem(MovieItem):
-    KEY = fanart.TYPE.MOVIE.HDCLEARART
+class HdArtItem(MovieItem):
+    KEY = fanart.TYPE.MOVIE.HDART
 
 
 class BannerItem(MovieItem):
@@ -68,7 +68,7 @@ class Movie(ResourceItem):
     WS = fanart.WS.MOVIE
 
     @Immutable.mutablemethod
-    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds, hdmovielogos, hdcleararts,
+    def __init__(self, name, imdbid, tmdbid, arts, logos, discs, posters, backgrounds, hdlogos, hdarts,
                  banners, thumbs):
         self.name = name
         self.imdbid = imdbid
@@ -78,8 +78,8 @@ class Movie(ResourceItem):
         self.logos = logos
         self.discs = discs
         self.backgrounds = backgrounds
-        self.hdmovielogos = hdmovielogos
-        self.hdcleararts = hdcleararts
+        self.hdlogos = hdlogos
+        self.hdarts = hdarts
         self.banners = banners
         self.thumbs = thumbs
 
@@ -96,8 +96,8 @@ class Movie(ResourceItem):
             discs=DiscItem.extract(resource),
             posters=PosterItem.extract(resource),
             backgrounds=BackgroundItem.extract(resource),
-            hdmovielogos=HDMovieLogoItem.extract(resource),
-            hdcleararts=HDClearArtItem.extract(resource),
+            hdlogos=HdLogoItem.extract(resource),
+            hdarts=HdArtItem.extract(resource),
             banners=BannerItem.extract(resource),
             thumbs=ThumbItem.extract(resource),
         )

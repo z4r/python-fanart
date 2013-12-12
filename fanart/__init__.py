@@ -84,8 +84,8 @@ class TYPE(object):
         DISC = 'moviedisc'
         POSTER = 'movieposter'
         BACKGROUND = 'moviebackground'
-        HDMOVIELOGO = 'hdmovielogo'
-        HDCLEARART = 'hdmovieclearart'
+        HDLOGO = 'hdmovielogo'
+        HDART = 'hdmovieclearart'
         BANNER = 'moviebanner'
         THUMB = 'moviethumb'
 
