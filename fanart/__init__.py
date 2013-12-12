@@ -68,6 +68,8 @@ class TYPE(object):
         BACKGROUND = 'showbackground'
         HDLOGO = 'hdtvlogo'
         HDART = 'hdclearart'
+        POSTER = 'tvposter'
+        BANNER = 'tvbanner'
 
     class MUSIC(object):
         DISC = 'cdart'
