@@ -68,6 +68,8 @@ class TYPE(object):
         BACKGROUND = 'showbackground'
         HDLOGO = 'hdtvlogo'
         HDART = 'hdclearart'
+        POSTER = 'tvposter'
+        BANNER = 'tvbanner'
 
     class MUSIC(object):
         DISC = 'cdart'
@@ -80,6 +82,12 @@ class TYPE(object):
         ART = 'movieart'
         LOGO = 'movielogo'
         DISC = 'moviedisc'
+        POSTER = 'movieposter'
+        BACKGROUND = 'moviebackground'
+        HDLOGO = 'hdmovielogo'
+        HDART = 'hdmovieclearart'
+        BANNER = 'moviebanner'
+        THUMB = 'moviethumb'
 
 
 class SORT(object):

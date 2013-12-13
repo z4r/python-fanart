@@ -9,6 +9,8 @@ __all__ = (
     'ThumbItem',
     'HdLogoItem',
     'HdArtItem',
+    'PosterItem',
+    'BannerItem',
     'TvShow',
 )
 
@@ -59,11 +61,20 @@ class HdArtItem(TvItem):
     KEY = fanart.TYPE.TV.HDART
 
 
+class PosterItem(TvItem):
+    KEY = fanart.TYPE.TV.POSTER
+
+
+class BannerItem(TvItem):
+    KEY = fanart.TYPE.TV.BANNER
+
+
 class TvShow(ResourceItem):
     WS = fanart.WS.TV
 
     @Immutable.mutablemethod
-    def __init__(self, name, tvdbid, backgrounds, characters, arts, logos, seasons, thumbs, hdlogos, hdarts):
+    def __init__(self, name, tvdbid, backgrounds, characters, arts, logos, seasons, thumbs, hdlogos, hdarts, posters,
+                 banners):
         self.name = name
         self.tvdbid = tvdbid
         self.backgrounds = backgrounds
@@ -74,6 +85,8 @@ class TvShow(ResourceItem):
         self.thumbs = thumbs
         self.hdlogos = hdlogos
         self.hdarts = hdarts
+        self.posters = posters
+        self.banners = banners
 
     @classmethod
     def from_dict(cls, resource):
@@ -90,4 +103,6 @@ class TvShow(ResourceItem):
             thumbs=ThumbItem.extract(resource),
             hdlogos=HdLogoItem.extract(resource),
             hdarts=HdArtItem.extract(resource),
+            posters=PosterItem.extract(resource),
+            banners=BannerItem.extract(resource),
         )
